@@ -1,0 +1,5 @@
+interface:
+  display_name: "camiAI 编程全流程"
+  short_description: "跨产品MVP规划、Demo设计、技术方案与产品实现提示词"
+  default_prompt: "使用 $camiai-programming-workflow 按约定流程推进产品开发。"
+
