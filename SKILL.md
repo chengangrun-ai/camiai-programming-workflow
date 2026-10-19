@@ -1,15 +1,22 @@
 ---
 name: camiai-programming-workflow
-description: Use when Cami starts a new product or a major product feature, or asks for MVP scope, a demo, a technology discussion, a technical plan, implementation, or manual acceptance.
+description: 用于 AI 编程助手协助开发新产品或重要功能，涵盖 MVP 讨论、Demo、技术选型、实现和人工验收；用户提到产品开发流程、MVP、Demo、技术方案、功能实现或验收时使用。
+license: MIT
 ---
 
 # camiAI 编程全流程
 
 按用户提供的产品开发顺序协作。默认完整执行；产品设计和技术设计可由用户按当前产品明确跳过。
 
+## Agent 通用约定
+
+- 本技能遵循 Agent Skills 开放格式，不依赖 Codex 专属命令或工具名称。按当前 Agent 实际提供的文件读取、终端、Git 和测试能力完成相同目标；不要声称使用了当前环境不具备的工具。
+- 检查仓库现有约定和当前 Agent 的说明文件，例如 `AGENTS.md`、`CLAUDE.md`、`GEMINI.md`、`.cursor/rules/`、`.github/copilot-instructions.md` 或同类文件。只处理实际存在的文件，并遵循其中与用户最新要求相容的约定。
+- 文件路径、界面操作和命令因 Agent 与操作系统而异；结合当前环境调整，不把某个平台的快捷命令当成通用命令。
+
 ## 开发顺序
 
-1. **环境搭建**：检查仓库、Git 状态和现有说明。新产品按需建立 Git 仓库，并创建或补充项目根目录的 `AGENTS.md`；先读已有内容，不覆盖项目约定。
+1. **环境搭建**：检查仓库、Git 状态和现有说明。新产品按需建立 Git 仓库，并创建或补充项目根目录的通用 `AGENTS.md`；先读已有说明，不覆盖项目约定。
 2. **产品设计（可跳过）**：和用户讨论产品方案、MVP 范围；需要时制作 Demo。Demo 默认只模拟数据，不接真实后端，重点让用户检查界面和操作流程。
 3. **技术设计（可跳过）**：阅读已有产品设计文档，先与用户讨论技术栈和方案；用户认可后，再把技术方案写入项目的 `docs/`。
 4. **产品实现**：按确认的范围写代码，补充或更新相关测试，并运行相关测试和验证。每个完成的改动建立对应 Git commit。
@@ -32,4 +39,5 @@ description: Use when Cami starts a new product or a major product feature, or a
 ## 提示词模板
 
 按当前阶段选择并改写 [提示词库](references/prompts.md)。示例里的“电子书阅读器”、Electron 等只是示例，不是所有产品的固定要求；遵循用户当前产品和最新明确要求。
+
 
