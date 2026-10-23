@@ -4,7 +4,35 @@
 
 本仓库采用 [Agent Skills 开放格式](https://agentskills.io/specification)：核心说明在 `SKILL.md`，提示词模板在 `references/prompts.md`。同一份内容可供支持该格式的 Agent 使用，例如 Codex、Claude Code、Cursor、OpenCode 等。Agent 的安装目录和触发方式可能不同。
 
-## 默认流程
+## 📺 看看效果
+
+```
+你说：我要做一个记账小程序
+     ↓
+① 环境搭建  检查 Git、项目说明、已有规则
+② 产品设计  讨论 MVP，做带模拟数据的 Demo      ← 可跳过
+③ 技术设计  定技术方案并记录                    ← 可跳过
+④ 产品实现  写代码、跑测试、每个改动一个 commit
+⑤ 人工验证  你实际用一遍，反馈后再改
+```
+
+> 五步走完，你拿到的是一个**跑得起来、能回退**的产品，不是一堆没验证的代码。
+
+## What This Does
+
+把「用 AI 写产品」从随机发挥变成固定流程：每一步有明确产出，每一步都能停下来检查，第 2、3 步可以按项目情况跳过。
+
+### Key Features
+
+- **顺序固定、可跳步**：默认五步，产品简单就直接实现
+- **每步配提示词模板**：`references/prompts.md` 里直接复制
+- **实现阶段强制 commit**：每个完成的改动一个 commit，永远能回退
+- **最后一步交给人**：AI 不判断好不好用，只负责让它跑起来
+- **跨 Agent 通用**：Codex、Claude Code、Cursor、OpenCode 都能用
+
+## Usage
+
+### 默认流程
 
 1. 环境搭建：检查 Git、项目说明和已有 Agent 规则。
 2. 产品设计：讨论产品方案、MVP，并按需制作模拟数据 Demo。可跳过。
@@ -14,7 +42,7 @@
 
 用户可以按产品明确跳过第 2、3 步；默认按顺序执行。提示词模板见 [`references/prompts.md`](references/prompts.md)。
 
-## 安装到 AI 编程助手
+## Installation
 
 ### 推荐：使用 skills 安装器
 
@@ -48,7 +76,7 @@ npx skills add chengangrun-ai/camiai-programming-workflow --all
 
 这份 Skill 面向支持 Agent Skills 开放格式，或能读取 Markdown 文件并遵循其中说明的 Agent。Agent Skills 不能让完全不支持 Skill 或本地文件读取的产品自动加载本流程；这类产品需要由用户通过其支持的方式提供 `SKILL.md` 内容。
 
-## 文件结构
+## Architecture
 
 ```text
 camiai-programming-workflow/
@@ -67,18 +95,23 @@ camiai-programming-workflow/
 | `references/prompts.md` | 每一步可直接复制的提示词模板 | 进入对应步骤时 |
 | `agents/openai.yaml` | Codex 的界面元信息 | 仅 Codex |
 
-## 设计取舍
+## Philosophy
 
 1. **流程固定，但不强制。** 五步顺序是默认路径，不是牢笼。产品简单就跳过设计，直接实现——但跳过要由用户明确决定，不由 AI 自作主张。
 2. **每一步都有可复制的提示词。** 不给模板的"流程"只是口号，落不了地。
 3. **实现阶段必须建 commit。** 每个完成的改动一个 commit，让"回退到能用的版本"永远可行。
 4. **最后一步交给人。** AI 不判断产品好不好用，只负责让它跑起来。
 
+## Requirements
+
+- 支持 Agent Skills 格式、或能读取 Markdown 并遵循说明的 Agent
+- 不需要任何运行时依赖
+
 ## Credits
 
 Created by Cami · [@chengangrun-ai](https://github.com/chengangrun-ai).
 
-## 许可
+## License
 
 本项目采用 MIT License，详见 [`LICENSE`](LICENSE)。
 
