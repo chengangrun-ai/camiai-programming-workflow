@@ -61,6 +61,23 @@ camiai-programming-workflow/
     └── prompts.md
 ```
 
+| 文件 | 作用 | 何时加载 |
+|---|---|---|
+| `SKILL.md` | 五步流程的完整定义与判断规则 | 每次会话 |
+| `references/prompts.md` | 每一步可直接复制的提示词模板 | 进入对应步骤时 |
+| `agents/openai.yaml` | Codex 的界面元信息 | 仅 Codex |
+
+## 设计取舍
+
+1. **流程固定，但不强制。** 五步顺序是默认路径，不是牢笼。产品简单就跳过设计，直接实现——但跳过要由用户明确决定，不由 AI 自作主张。
+2. **每一步都有可复制的提示词。** 不给模板的"流程"只是口号，落不了地。
+3. **实现阶段必须建 commit。** 每个完成的改动一个 commit，让"回退到能用的版本"永远可行。
+4. **最后一步交给人。** AI 不判断产品好不好用，只负责让它跑起来。
+
+## Credits
+
+Created by Cami · [@chengangrun-ai](https://github.com/chengangrun-ai).
+
 ## 许可
 
 本项目采用 MIT License，详见 [`LICENSE`](LICENSE)。
